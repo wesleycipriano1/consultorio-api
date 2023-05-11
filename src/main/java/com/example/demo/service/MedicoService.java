@@ -25,5 +25,10 @@ public class MedicoService {
 		List<Medico> obj=medicoRepository.findAll();
 		return obj;
 	}
+	public Medico add_medico(Medico medico) {
+		medico.setId(null);
+		return medicoRepository.save(medico);
+		
+	}
 
 }
