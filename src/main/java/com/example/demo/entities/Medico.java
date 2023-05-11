@@ -14,7 +14,7 @@ public class Medico implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	private long crm;
+	private String crm;
 	private String nome;
 	private String especialidade;
 
@@ -22,7 +22,7 @@ public class Medico implements Serializable{
 
 	}
 
-	public Medico(long id, long crm, String nome, String especialidade) {
+	public Medico(long id, String crm, String nome, String especialidade) {
 		super();
 		this.id = id;
 		this.crm = crm;
@@ -38,11 +38,11 @@ public class Medico implements Serializable{
 		this.id = id;
 	}
 
-	public long getCrm() {
+	public String getCrm() {
 		return crm;
 	}
 
-	public void setCrm(long crm) {
+	public void setCrm(String crm) {
 		this.crm = crm;
 	}
 
