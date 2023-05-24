@@ -19,12 +19,18 @@ public class PacienteService {
 	
 	public Paciente findById(Long id) {
 		Optional<Paciente>obj=pacienteRepsoitory.findById(id);
-		return obj.orElseThrow(()-> new ObjectNotFoundExecption("medico não encontrado! id"+ id +"tipo"+Paciente.class.getName() ));
+		return obj.orElseThrow(()-> new ObjectNotFoundExecption("paciente não encontrado! id"+ id +"tipo"+Paciente.class.getName() ));
 		
 	}
 	public List<Paciente> findAll(){
 		List<Paciente>list=pacienteRepsoitory.findAll();
 		return list;
+	}
+	
+	public Paciente Add_paciente(Paciente paciente) {
+		paciente.setId(null);
+		return pacienteRepsoitory.save(paciente);
+		
 	}
 
 }

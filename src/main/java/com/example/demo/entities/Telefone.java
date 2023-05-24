@@ -3,6 +3,9 @@ package com.example.demo.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,9 +22,21 @@ public class Telefone implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String numero;
+	
 	@ManyToOne
 	@JoinColumn(name = "paciente_id")
+	@JsonProperty("paciente")
 	private Paciente paciente;
+	
+	public Telefone() {
+	
+	}
+	public Telefone(Long id, String numero, Paciente paciente) {
+		super();
+		this.id = id;
+		this.numero = numero;
+		this.paciente = paciente;
+	}
 	public Long getId() {
 		return id;
 	}

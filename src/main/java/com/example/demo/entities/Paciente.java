@@ -4,14 +4,16 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 
-@Entity
+@Entity(name = "TB_paciente")
 public class Paciente implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -20,8 +22,9 @@ public class Paciente implements Serializable {
 	private Long id;
 	private String nome;
 	private String cpf;
-	@OneToMany
-	@JoinColumn(name = "paciente_id")
+	
+	@OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("paciente")
 	private List<Telefone>telefones;
 	@Override
 	public int hashCode() {
